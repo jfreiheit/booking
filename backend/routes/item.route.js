@@ -5,12 +5,14 @@ const Item = require('../models/item.model');
 
 // post one item
 router.post('/', async(req, res) => {
+    console.log('booking req', req)
     const newItem = new Item({
-        title: req.body.titel,
-        amount: req.body.betrag,
-        date: req.body.datum,
-        user_id: req.session.user_id
+        title: req.body.item.titel,
+        amount: req.body.item.betrag,
+        date: req.body.item.datum,
+        user_id: req.body.item.user_id
     })
+    console.log('newItem', newItem)
     await newItem.save();
     res.send(newItem);
 

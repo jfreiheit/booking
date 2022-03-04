@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 
 const User = require('../models/user.model');
 
-// get all items
+// get all users
 router.get('/', async(req, res) => {
     const allUsers = await User.find();
     console.log(allUsers);
@@ -62,7 +62,7 @@ router.get('/:account', async(req, res) => {
         const user = await User.findOne({ account: req.params.account });
 
         console.log(req.params);
-        res.send(user);
+        res.send(user._id);
     } catch {
         res.status(404);
         res.send({
