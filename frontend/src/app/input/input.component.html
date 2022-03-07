@@ -1,0 +1,38 @@
+<form [formGroup]="inputForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="booking-card">
+    <mat-card-header>
+      <mat-card-title>Buchung</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Beschreibung" formControlName="titel">
+            <mat-error *ngIf="inputForm.controls['titel'].hasError('required')">
+              title is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col first">
+          <mat-form-field class="full-width">
+            <input matInput type="number" onfocus="this.select()" placeholder="Betrag" formControlName="betrag">
+            <mat-icon matSuffix class="smaller">euro_symbol</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Buchungstag</mat-label>
+            <input matInput [matDatepicker]="datum" formControlName="datum">
+            <mat-datepicker-toggle matSuffix [for]="datum"></mat-datepicker-toggle>
+            <mat-datepicker #datum></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!inputForm.valid">Buchen</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

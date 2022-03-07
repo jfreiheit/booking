@@ -1,0 +1,39 @@
+.full-width {
+  width: 96%;
+  margin: 1% 4% auto;
+}
+
+form {
+  margin: 4% 4%;
+}
+
+.booking-card {
+  min-width: 120px;
+  margin: 4% auto;
+}
+
+.mat-card-actions {
+  margin: 4% 4%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.first {
+  margin-left: 2%;
+}
+
+.col {
+  flex: 1;
+  margin-right: 4%;
+}
+
+.col:last-child {
+  margin-right: 4%;
+}
+
+.smaller {
+  transform: scale(0.7);
+}

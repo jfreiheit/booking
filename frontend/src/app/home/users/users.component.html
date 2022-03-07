@@ -1,0 +1,27 @@
+
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Registrierte Nutzer
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <table *ngIf="users" class="table table-striped" style="color: black;">
+
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Id</th>
+              <th scope="col">Account</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users; index as i">
+              <td>{{ i }}</td>
+              <td>{{ user._id }}</td>
+              <td>{{ user.account }}</td>
+            </tr>
+          </tbody>
+        </table>
+        </mat-card-content>
+      </mat-card>

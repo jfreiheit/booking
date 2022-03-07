@@ -1,0 +1,31 @@
+.full-width {
+  width: 96%;
+  margin: 1% 4% auto;
+}
+
+form {
+  margin: 4% 4%;
+}
+
+.login-card {
+  min-width: 120px;
+  margin: 4% auto;
+}
+
+.mat-card-actions {
+  margin: 4% 4%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  flex: 1;
+  margin-right: 4%;
+}
+
+.col:last-child {
+  margin-right: 4%;
+}
