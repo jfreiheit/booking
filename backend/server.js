@@ -1,5 +1,10 @@
 const express = require('express');
 const cors = require('cors');
+const https = require('https');
+const http = require('http');
+
+const fs = require('fs');
+
 const mongoose = require('mongoose');
 const session = require('express-session');
 require('dotenv').config();
@@ -24,9 +29,22 @@ app.use('/user', userRoute);
 app.use('/item', itemRoute);
 
 const port = process.env.PORT || 4000;
-app.listen(port, () => {
-    console.log('Connected to port ' + port)
-})
+const port_s = process.env.PORT_S || 3001;
+
+// Listen both http & https ports
+const httpServer = http.createServer(app);
+const httpsServer = https.createServer({
+  key: fs.readFileSync('/etc/letsencrypt/live/freiheit.f4.htw-berlin.de/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/freiheit.f4.htw-berlin.de/fullchain.pem'),
+}, app);
+
+httpServer.listen(port, () => {
+    console.log(`HTTP Server running on port ${port}`);
+});
+
+httpsServer.listen(port_s, () => {
+    console.log(`HTTPS Server running on port ${port_s}`);
+});
 
 // connect to mongoDB
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true })
