@@ -30,7 +30,7 @@ app.use('/item', itemRoute);
 
 const port = process.env.PORT || 4000;
 const port_s = process.env.PORT_S || 3001;
-
+const mongodatabase = process.env.DB_CONNECTION || 'mongodb://127.0.0.1:27017/bookings';
 // Listen both http & https ports
 const httpServer = http.createServer(app);
 const httpsServer = https.createServer({
@@ -47,7 +47,7 @@ httpsServer.listen(port_s, () => {
 });
 
 // connect to mongoDB
-mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(mongodatabase, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(
         () => { console.log('connected to DB'); },
         err => { console.error.bind(console, 'connection error:') }

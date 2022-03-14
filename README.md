@@ -31,5 +31,5 @@ firewall.sh
 iptables -A INPUT -p tcp --dport 4000 -j ACCEPT
 iptables -A OUTPUT -p tcp --dport 4000 -j ACCEPT
 
-iptables -A INPUT -p tcp --dport 4200 -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 4200 -j ACCEPT
+iptables -A INPUT -p tcp --dport 3001 -j ACCEPT
+iptables -A OUTPUT -p tcp --dport 3001 -j ACCEPT
