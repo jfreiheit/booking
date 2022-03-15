@@ -7,9 +7,9 @@ const Item = require('../models/item.model');
 router.post('/', async(req, res) => {
     console.log('booking req', req)
     const newItem = new Item({
-        title: req.body.item.titel,
-        amount: req.body.item.betrag,
-        date: req.body.item.datum,
+        title: req.body.item.title,
+        amount: req.body.item.amount,
+        date: req.body.item.date,
         user_id: req.body.item.user_id
     })
     console.log('newItem', newItem)

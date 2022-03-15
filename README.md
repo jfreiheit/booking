@@ -27,6 +27,8 @@
 
 ## Deployment
 
+### Backend
+
 Fehler:
 
 	internal/modules/cjs/loader.js:1057
@@ -51,3 +53,23 @@ Lösung:
 	npm uninstall bcrypt
 	npm i bcrypt
 
+### Frontend
+
+nach Eingabe von `ng build` im `frontend`-Verzeichnis:
+
+```
+Could not find the '@angular-devkit/build-angular:browser' builder's node package.
+```
+
+Lösung 
+
+- `nvm` installiert
+- `nvm list-remote` 
+- letzte gerade Version von `node` ermittelt (`v16.14.0`)
+- `nvm install v16.14.0`
+- `rm package-lock.json`
+- `npm rm -rf node_modules`
+- `npm install --save-dev @angular/cli@latest`
+- `npm uninstall @angular-devkit/build-angular`
+- `npm i --save-dev @angular-devkit/build-angular@latest`
+- 
