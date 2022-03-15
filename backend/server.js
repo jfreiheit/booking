@@ -28,27 +28,45 @@ app.use(session({
 app.use('/user', userRoute);
 app.use('/item', itemRoute);
 
-const port = process.env.PORT || 4000;
-const port_s = process.env.PORT_S || 3001;
-const mongodatabase = process.env.DB_CONNECTION || 'mongodb://127.0.0.1:27017/bookings';
-// Listen both http & https ports
-const httpServer = http.createServer(app);
-const httpsServer = https.createServer({
-  key: fs.readFileSync('/etc/letsencrypt/live/freiheit.f4.htw-berlin.de/privkey.pem'),
-  cert: fs.readFileSync('/etc/letsencrypt/live/freiheit.f4.htw-berlin.de/fullchain.pem'),
-}, app);
+if(process.env.NODE_ENV === 'production')
+{
+    const port_s = 3001;
+    
+    const httpsServer = https.createServer({
+        key: fs.readFileSync('/etc/letsencrypt/live/freiheit.f4.htw-berlin.de/privkey.pem'),
+        cert: fs.readFileSync('/etc/letsencrypt/live/freiheit.f4.htw-berlin.de/fullchain.pem'),
+    }, app);
 
-httpServer.listen(port, () => {
-    console.log(`HTTP Server running on port ${port}`);
-});
+    httpsServer.listen(port_s, () => {
+        console.log(`HTTPS Server running on port ${port_s}`);
+    });
 
-httpsServer.listen(port_s, () => {
-    console.log(`HTTPS Server running on port ${port_s}`);
-});
+    // connect to mongoDB
+    mongoose.connect('mongodb://127.0.0.1:27017/bookings', { useNewUrlParser: true, useUnifiedTopology: true })
+        .then(
+            () => { console.log('connected to DB'); },
+            err => { console.error.bind(console, 'connection error:') }
+        );
+} 
+else    // development mode
+{
+    const httpServer = http.createServer(app);
+    const port = process.env.PORT;
 
-// connect to mongoDB
-mongoose.connect(mongodatabase, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(
-        () => { console.log('connected to DB'); },
-        err => { console.error.bind(console, 'connection error:') }
-    );
+    httpServer.listen(port, () => {
+        console.log(`HTTP Server running on port ${port}`);
+    });
+
+    // connect to mongoDB
+    mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true })
+        .then(
+            () => { console.log('connected to DB'); },
+            err => { console.error.bind(console, 'connection error:') }
+        );
+}
+
+
+
+
+
+

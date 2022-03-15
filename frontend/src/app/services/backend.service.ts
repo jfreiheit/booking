@@ -25,4 +25,12 @@ export class BackendService {
   allUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.backendURL + '/user/');
   }
+
+  getSum(): Observable<any> {
+    return this.http.get<any>(this.backendURL + '/item/sum');
+  }
+
+  getAllItems(): Observable<Item[]> {
+    return this.http.get<Item[]>(this.backendURL + '/item/all');
+  }
 }

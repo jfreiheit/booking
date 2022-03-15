@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { BackendService } from 'src/app/services/backend.service';
 
@@ -7,7 +7,7 @@ import { BackendService } from 'src/app/services/backend.service';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent {
   users!: User[];
 
   constructor(private bs: BackendService) {
@@ -15,9 +15,6 @@ export class UsersComponent implements OnInit {
       this.users = response;
       console.log('this.users', this.users)
     });
-  }
-
-  ngOnInit(): void {
   }
 
 }

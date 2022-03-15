@@ -1,0 +1,31 @@
+
+      <mat-card class="dashboard-card scrollable-content">
+        <mat-card-header>
+          <mat-card-title>
+            Gebuchte Ausgaben
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <table *ngIf="items" class="table table-striped" style="color: black;">
+
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Titel</th>
+              <th scope="col">Betrag</th>
+              <th scope="col">Datum</th>
+              <th scope="col">user_id</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of items; index as i">
+              <td>{{ i }}</td>
+              <td>{{ item.title }}</td>
+              <td class="column-right">{{ item.amount }} </td>
+              <td>{{ item.date | date:'d.MM.YYYY' }}</td>
+              <td>{{ item.user_id }}</td>
+            </tr>
+          </tbody>
+        </table>
+        </mat-card-content>
+      </mat-card>

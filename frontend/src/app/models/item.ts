@@ -1,7 +1,7 @@
 export interface Item {
-  titel: string;
-  betrag: number;
-  datum: Date;
+  title: string;
+  amount: number;
+  date: Date;
   user_id: string;
 }
 

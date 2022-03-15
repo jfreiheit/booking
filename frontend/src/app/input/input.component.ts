@@ -31,9 +31,9 @@ export class InputComponent {
   onSubmit(): void {
     console.log('sessionStorage', sessionStorage.getItem('user_id'))
     let item: Item = {
-      "titel": this.inputForm.value.titel,
-      "betrag": this.inputForm.value.betrag,
-      "datum": this.inputForm.value.datum,
+      "title": this.inputForm.value.titel,
+      "amount": this.inputForm.value.betrag,
+      "date": this.inputForm.value.datum,
       "user_id": sessionStorage.getItem('user_id') ?? ''
     }
     this.bs.booking(item).subscribe(

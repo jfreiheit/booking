@@ -1,5 +1,30 @@
 # booking
 
+## REST-API
+
+### `/user`
+
+- `GET /` alle User
+- `POST /` neuen User anlegen 
+	- `{account: , password: }` im Body
+	- `response` neuer User 
+- `POST /login/:account` User einloggen 
+	- `account` als Parmeter, 
+	- `{ password: }` im Body
+	- `response` neuer User oder `403` `wrong password` oder `404` `user does not exist`
+- `GET /:account` finde `account`
+	- `response` `user._id` oder `404` `user does not exist`
+
+### `/item`
+
+- `POST /` neuen Eintrag erstellen 
+	- `{ title: , amount: , date: , user._id: }` aus Body
+- `GET /` alle Einträge einer `user._id` 
+	- `user_id` als `req.session.user_id`
+- `DELETE /:id` lösche Eintrag mit `_id` als Parameter
+- `GET /sum` Summe aller Einträge (`account`)
+
+
 ## Deployment
 
 Fehler:
@@ -26,10 +51,3 @@ Lösung:
 	npm uninstall bcrypt
 	npm i bcrypt
 
-firewall.sh
-
-iptables -A INPUT -p tcp --dport 4000 -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 4000 -j ACCEPT
-
-iptables -A INPUT -p tcp --dport 3001 -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 3001 -j ACCEPT

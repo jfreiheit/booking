@@ -31,6 +31,41 @@ router.get('/', async(req, res) => {
     }
 });
 
+
+// get sum of all items
+router.get('/sum', async(req, res) => {
+    try {
+        const item = await Item.find();
+        let sum = 0.0;
+        console.log('item', item)
+        item.forEach(value => {
+            console.log('value', value)
+            console.log('value.amount', value.amount)
+            sum += value.amount
+        })
+        res.send({sum: sum.toFixed(2)});
+    } catch {
+        res.status(404);
+        res.send({
+            error: "no items"
+        });
+    }
+});
+
+
+// get sum of all items
+router.get('/all', async(req, res) => {
+    try {
+        const items = await Item.find();
+        res.send(items);
+    } catch {
+        res.status(404);
+        res.send({
+            error: "no items"
+        });
+    }
+});
+
 // delete one item via id
 router.delete('/:id', async(req, res) => {
     try {

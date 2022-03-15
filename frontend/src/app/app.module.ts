@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -31,6 +31,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersComponent } from './home/users/users.component';
+import { SumComponent } from './home/sum/sum.component';
+import { ItemsComponent } from './home/items/items.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { UsersComponent } from './home/users/users.component';
     NavComponent,
     HomeComponent,
     PagenotfoundComponent,
-    UsersComponent
+    UsersComponent,
+    SumComponent,
+    ItemsComponent
   ],
   imports: [
     BrowserModule,

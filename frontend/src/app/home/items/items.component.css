@@ -1,0 +1,38 @@
+.grid-container {
+  margin: 20px;
+}
+
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+.dashboard-card-content {
+  text-align: center;
+}
+
+.column-right
+{
+  text-align: right;
+}
+
+.icon-display {
+  transform: scale(.6);
+}
+
+.mat-card.scrollable-content {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-card.scrollable-content.mat-card-title-group {
+  display: block;
+}
+
+.mat-card.scrollable-content.mat-card-content {
+  overflow-y: auto;
+}
